@@ -1,6 +1,7 @@
 import pygame
 import time
 from paddle import*
+from ball import*
 
 class Game():
 
@@ -15,6 +16,9 @@ class Game():
 
         self.player = Paddle(self.window, 350, 450, self.paddle)
 
+        self.ball_img = pygame.image.load("images/ball.png")
+        self.ball_img = pygame.transform.scale(self.ball_img,(32,32))
+        self.ball = Ball(self.window, self.ball_img,350,350)
         self.clock = pygame.time.Clock()
 
     def run(self):
@@ -29,6 +33,9 @@ class Game():
             self.window.blit(self.bg, (0,0))
             self.player.draw()
             self.player.move(delta_time)
+            self.ball.draw()
+            self.ball.move(delta_time)
+        
 
             pygame.display.update()
 

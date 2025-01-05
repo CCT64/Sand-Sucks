@@ -19,3 +19,10 @@ class Paddle():
             self.paddle_rect.x -= self.velocity * delta_time
         elif(pressed[pygame.K_d]):
             self.paddle_rect.x += self.velocity * delta_time
+        self.check_bound
+
+    def check_bound(self):
+        if self.paddle_rect.x < 0:
+            self.paddle_rect.x = 0
+        if self.paddle_rect.x > self.window.get_width() - self.paddle_rect.width:
+            self.paddle_rect.x = self.window.get_width() - self.paddle_rect.width
